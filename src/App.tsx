@@ -1,5 +1,6 @@
 import './App.css'
 import CreateTask from './Components/CreateTask/CreateTask'
+import EditTask from './Components/EditTask/EditTask'
 import Header from './Components/Header/Header'
 import Home from './Pages/Home/Home'
 import LandingPage from './Pages/LandingPage/LandingPage'
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/home' element={<Home />} />
         <Route path='/create' element={<CreateTask />} />
+        <Route path='/edit/:id' element={<EditTask />} />
       </Routes>
 
     </>

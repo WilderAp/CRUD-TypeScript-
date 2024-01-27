@@ -20,10 +20,10 @@ function CreateTask() {
     })
 
 
-    const handleSubmit = (event: SyntheticEvent): void => {
+    const handleSubmit = async (event: SyntheticEvent): Promise<void> => {
         event.preventDefault();
         try {
-            postTask(form)
+             await postTask(form)
             setForm({ title: '', description: '' })
             Swal.fire("Buen Trabajo!", "Tarea creada exitosamente!", "success");
             navigate("/home");
@@ -33,7 +33,7 @@ function CreateTask() {
         }
     };
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLFormElement>): void => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const { value } = event.target;
         setForm({
             title: value,
@@ -41,7 +41,7 @@ function CreateTask() {
         })
     }
 
-    const handleChangeDes = (event: ChangeEvent<HTMLInputElement | HTMLFormElement>): void => {
+    const handleChangeDes = (event: ChangeEvent<HTMLInputElement>): void => {
         const { value } = event.target;
         setForm({
             title: form.title,

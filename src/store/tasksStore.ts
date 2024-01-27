@@ -1,15 +1,20 @@
 import { create } from "zustand";
-import { type Task } from "../types";
+import { TaskStatus, type Task } from "../types";
 import axios from "axios"
 
 interface State {
     tasks: Task[],
     fetchTask: (limit: number) => Promise<void>
-    postTask: (limit: number) => Promise<void>
-    updateTask: (limit: number) => Promise<void>
-    deleteTask: (limit: number) => Promise<void>
+    postTask: (form: FormData) => Promise<void>
+    updateComplete: (id: string, updatedFields: TaskStatus) => Promise<void>
+    updateTask: (id: string, updatedFields: Task) => Promise<void>
+    deleteTask: (id: string) => Promise<void>
 
 }
+interface FormData {
+    title: string;
+    description: string;
+  }
 
 export const useTaskStore = create<State>((set) => {
     return {
@@ -26,13 +31,23 @@ export const useTaskStore = create<State>((set) => {
             }
         },
 
-        postTask: async (form) => {
+        postTask: async (form: FormData): Promise<void> => {
             try {
                 const response = await axios.post("http://localhost:3001/task", form);
                 const newTask: Task[] = response.data;
                 set({ tasks: newTask });
                 // Swal.fire("Buen Trabajo!", "Tarea creada exitosamente!", "success");
                 // navigate("/home");
+            } catch (error) {
+                console.error("Error al obtener tareas:", error);
+            }
+        },
+
+        updateComplete: async (id: string, updatedFields: Task): Promise<void> => {
+            try {
+                const response = await axios.put(`http://localhost:3001/task/${id}`, updatedFields);
+                const newTask: Task[] = response.data;
+                set({ tasks: newTask });
             } catch (error) {
                 console.error("Error al obtener tareas:", error);
             }
