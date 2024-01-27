@@ -1,0 +1,52 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* justify-content: space-around; */
+    /* flex-direction: column; */
+    margin: 10%;
+}
+
+;
+
+.postsList {
+    /* background-color: #faedcd; */
+    display: block;
+    /* justify-content: center; */
+    width: 20rem;
+    border: 1px solid;
+    /* border-color: tomato; */
+    border-radius: 1rem;
+    padding: 3rem;
+    margin: auto;
+    margin-bottom: 20px;
+    max-height: 35rem;
+    min-height: 27rem;
+    /* overflow: auto;
+    text-overflow: ellipsis;
+    scroll-behavior: smooth;
+    scrollbar-arrow-color: turquoise;
+    scrollbar-base-color: turquoise;
+    scrollbar-highlight-color: tomato;
+    scrollbar-color: tranparent;
+    scrollbar-width: thin;
+    display: inline-block; */
+
+}
+
+postsList::-webkit-scrollbar {
+    background-color: rgb(82, 208, 195);
+    color: transparent;
+}
+
+.completeButton:hover {
+    background-color: #4f772d;
+}
+
+.editButton:hover {
+    background-color: #231942;
+}
+
+.completedTask {
+    background-color: #90a955; /* Fondo verde para tareas completadas */
+}
