@@ -9,12 +9,12 @@ function LandingPage() {
                     <img src={tasklogo} alt="task_logo" />
                 </Link>
             </figure>
+            <h1>¡CREA Y ORGANIZA TUS TAREAS!</h1>
+            <br />
             <Link to="/home">
             <button>¡GO!</button>
             </Link>
-
-            <h1>¡CREA Y ORGANIZA TUS TAREAS!</h1>
-            <h2>{":)"}</h2>
+            <br />
             <br />
             <p>By WilderAp</p>
         </div>
