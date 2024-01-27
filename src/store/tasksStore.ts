@@ -23,7 +23,7 @@ export const useTaskStore = create<State>((set) => {
 
         fetchTask: async () => {
             try {
-                const response = await axios.get("http://localhost:3001/task");
+                const response = await axios.get("https://crud-typescript-backend.onrender.com/task");
                 const newTask: Task[] = response.data;
                 set({ tasks: newTask });
             } catch (error) {
@@ -33,7 +33,7 @@ export const useTaskStore = create<State>((set) => {
 
         postTask: async (form: FormData): Promise<void> => {
             try {
-                const response = await axios.post("http://localhost:3001/task", form);
+                const response = await axios.post("https://crud-typescript-backend.onrender.com/task", form);
                 const newTask: Task[] = response.data;
                 set({ tasks: newTask });
                 // Swal.fire("Buen Trabajo!", "Tarea creada exitosamente!", "success");
@@ -45,7 +45,7 @@ export const useTaskStore = create<State>((set) => {
 
         updateComplete: async (id: string, updatedFields: Complete): Promise<void> => {
             try {
-                const response = await axios.put(`http://localhost:3001/task/${id}`, updatedFields);
+                const response = await axios.put(`https://crud-typescript-backend.onrender.com/task/${id}`, updatedFields);
                 const newTask: Task[] = response.data;
                 set({ tasks: newTask });
             } catch (error) {
@@ -55,7 +55,7 @@ export const useTaskStore = create<State>((set) => {
 
         updateTask: async (id: string, updatedFields: Task): Promise<void> => {
             try {
-                const response = await axios.put(`http://localhost:3001/task/${id}`, updatedFields);
+                const response = await axios.put(`https://crud-typescript-backend.onrender.com/task/${id}`, updatedFields);
                 const newTask: Task[] = response.data;
                 set({ tasks: newTask });
             } catch (error) {
@@ -65,7 +65,7 @@ export const useTaskStore = create<State>((set) => {
 
         deleteTask: async (id: string) => {
             try {
-                const response = await axios.delete(`http://localhost:3001/task/${id}`);
+                const response = await axios.delete(`https://crud-typescript-backend.onrender.com/task/${id}`);
                 const newTask: Task[] = response.data;
                 console.log(newTask);
                 
