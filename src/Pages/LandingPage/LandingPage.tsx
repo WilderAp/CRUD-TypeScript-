@@ -3,12 +3,16 @@ import tasklogo from "../../assets/Google Tasks.svg";
 
 function LandingPage() {
     return (
-        <div>
-            <figure>
+        <div style={{textAlign: "center"}}>
+            <figure style={{display: "block", justifyContent: "center", width: 200, height: 280, margin: "auto"}}>
                 <Link to="/home">
                     <img src={tasklogo} alt="task_logo" />
                 </Link>
             </figure>
+            <Link to="/home">
+            <button>¡GO!</button>
+            </Link>
+
             <h1>¡CREA Y ORGANIZA TUS TAREAS!</h1>
             <h2>{":)"}</h2>
             <br />
