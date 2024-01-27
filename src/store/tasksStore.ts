@@ -1,12 +1,12 @@
 import { create } from "zustand";
-import { TaskStatus, type Task } from "../types";
+import {  type Task, type Complete } from "../types";
 import axios from "axios"
 
 interface State {
     tasks: Task[],
     fetchTask: (limit: number) => Promise<void>
     postTask: (form: FormData) => Promise<void>
-    updateComplete: (id: string, updatedFields: TaskStatus) => Promise<void>
+    updateComplete: (id: string, updatedFields: Complete) => Promise<void>
     updateTask: (id: string, updatedFields: Task) => Promise<void>
     deleteTask: (id: string) => Promise<void>
 
@@ -43,7 +43,7 @@ export const useTaskStore = create<State>((set) => {
             }
         },
 
-        updateComplete: async (id: string, updatedFields: Task): Promise<void> => {
+        updateComplete: async (id: string, updatedFields: Complete): Promise<void> => {
             try {
                 const response = await axios.put(`http://localhost:3001/task/${id}`, updatedFields);
                 const newTask: Task[] = response.data;

@@ -3,8 +3,7 @@ import { useTaskStore } from "../../store/tasksStore"
 import { Card, CardContent, Typography } from "@mui/material";
 import "./Home.css";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import { useEffect, useState } from "react";
-import { TaskStatus } from "../../types";
+import { useEffect, } from "react";
 
 function Home() {
     const tasks = useTaskStore(state => state.tasks);
@@ -13,8 +12,6 @@ function Home() {
     const deleteTask = useTaskStore(state => state.deleteTask);
     const updateTask = useTaskStore(state => state.updateComplete);
     // const [isEditing, setIsEditing] = useState(false);
-    const [editedTitle, setEditedTitle] = useState("");
-    const [editedDescription, setEditedDescription] = useState("");
 
     const handleDelete = async (taskId: string) => {
         try {
@@ -26,7 +23,9 @@ function Home() {
 
     const handleComplete = async (taskId: string) => {
         try {
-            await updateTask(taskId, TaskStatus.DONE);
+            await updateTask(taskId, { status: "DONE"});
+            console.log(taskId);
+            
         } catch (error) {
             console.error("Error al actualizar tarea:", error);
         }
@@ -57,7 +56,7 @@ function Home() {
                             <figure style={{ display: "flex", justifyContent: "end" }} onClick={() => handleDelete(task?.id ?? "")}>
                                 <DeleteOutlinedIcon />
                             </figure>
-                            <figure style={{ display: "flex", justifyContent: "start" }} onClick={() => handleComplete(task?.id ?? "")}>
+                            <figure style={{ display: "flex", justifyContent: "start" }} >
                                 {task?.status === "DONE" ? '✅' : '🔘'}
                             </figure>
                             <CardContent sx={{ textAlign: "center" }}>
@@ -67,7 +66,7 @@ function Home() {
                                 <p>{task.description}</p>
                             </CardContent>
                             <div style={{display: "flex", justifyContent: "space-between"}}>
-                                <button className="completeButton" style={{ marginRight: 50 }}>
+                                <button className="completeButton" style={{ marginRight: 50 }} onClick={() => handleComplete(task?.id ?? "")}>
                                     Complete
                                 </button>
                                 <Link to={`/edit/${task.id}`}>

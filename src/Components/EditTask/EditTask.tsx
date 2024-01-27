@@ -3,6 +3,7 @@ import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useTaskStore } from '../../store/tasksStore';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import "./EditTask.css"
 
 interface FormData {
     title: string;

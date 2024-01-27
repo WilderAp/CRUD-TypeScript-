@@ -10,3 +10,7 @@ export interface Task {
     description?: string,
     status?: TaskStatus
 }
+
+export interface Complete {
+    status?: "DONE"
+}
