@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import tasklogo from "../../assets/Google Tasks.svg";
+import "./Landing.css";
 
 function LandingPage() {
     return (
-        <div style={{textAlign: "center"}}>
-            <figure style={{display: "block", justifyContent: "center", width: 200, height: 280, margin: "auto"}}>
+        <div className="Landing">
+            <figure style={{display: "block", width: 200, height: 280}}>
                 <Link to="/home">
                     <img src={tasklogo} alt="task_logo" />
                 </Link>

@@ -2,7 +2,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    /* justify-content: space-around; */
     /* flex-direction: column; */
     margin: 10%;
 }
@@ -11,7 +10,6 @@
 
 .postsList {
     /* background-color: #faedcd; */
-    display: block;
     /* justify-content: center; */
     width: 20rem;
     border: 1px solid;

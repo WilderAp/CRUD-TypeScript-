@@ -23,9 +23,9 @@ function Home() {
 
     const handleComplete = async (taskId: string) => {
         try {
-            await updateTask(taskId, { status: "DONE"});
+            await updateTask(taskId, { status: "DONE" });
             console.log(taskId);
-            
+
         } catch (error) {
             console.error("Error al actualizar tarea:", error);
         }
@@ -47,42 +47,46 @@ function Home() {
     }, [])
 
     return (
-        <div className="list">
-            <p>{tasks.length}/10</p>
-            {
-                tasks && tasks.length > 0
-                    ? limitedTasks?.map((task) => (
-                        <Card key={task.id} className="postList" sx={{ minWidth: 275, width: 245, margin: 10, maxWidth: 245, padding: 2 }}>
-                            <figure style={{ display: "flex", justifyContent: "end" }} onClick={() => handleDelete(task?.id ?? "")}>
-                                <DeleteOutlinedIcon />
-                            </figure>
-                            <figure style={{ display: "flex", justifyContent: "start" }} >
-                                {task?.status === "DONE" ? '✅' : '🔘'}
-                            </figure>
-                            <CardContent sx={{ textAlign: "center" }}>
-                                <Typography variant="h5" component="div">
-                                    {task?.title?.toUpperCase() ?? ""}
-                                </Typography>
-                                <p>{task.description}</p>
-                            </CardContent>
-                            <div style={{display: "flex", justifyContent: "space-between"}}>
-                                <button className="completeButton" style={{ marginRight: 50 }} onClick={() => handleComplete(task?.id ?? "")}>
-                                    Complete
-                                </button>
-                                <Link to={`/edit/${task.id}`}>
-                                    <button className="completeButton" style={{ marginRight: 50 }}>
-                                        Edit
+        <>
+            <div style={{width: "100vh", display: "flex", justifyContent: "start", marginLeft: "150px", marginTop: "20px"}}>
+                <p>{tasks.length}/10</p>
+            </div>
+            <div className="list">
+                {
+                    tasks && tasks.length > 0
+                        ? limitedTasks?.map((task) => (
+                            <Card key={task.id} className="postList" sx={{ minWidth: 275, width: 245, margin: 10, maxWidth: 245, padding: 2 }}>
+                                <figure style={{ display: "flex", justifyContent: "end" }} onClick={() => handleDelete(task?.id ?? "")}>
+                                    <DeleteOutlinedIcon />
+                                </figure>
+                                <figure style={{ display: "flex", justifyContent: "start" }} >
+                                    {task?.status === "DONE" ? '✅' : '🔘'}
+                                </figure>
+                                <CardContent sx={{ textAlign: "center" }}>
+                                    <Typography variant="h5" component="div">
+                                        {task?.title?.toUpperCase() ?? ""}
+                                    </Typography>
+                                    <p>{task.description}</p>
+                                </CardContent>
+                                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                    <button className="completeButton" style={{ marginRight: 50 }} onClick={() => handleComplete(task?.id ?? "")}>
+                                        Complete
                                     </button>
-                                </Link>
-                            </div>
+                                    <Link to={`/edit/${task.id}`}>
+                                        <button className="completeButton" style={{ marginRight: 50 }}>
+                                            Edit
+                                        </button>
+                                    </Link>
+                                </div>
 
-                        </Card>
-                    ))
-                    : <Link to="/create">
-                        <button>CREATE FIRST TASK</button>
-                    </Link>
-            }
-        </div>
+                            </Card>
+                        ))
+                        : <Link to="/create">
+                            <button>CREATE FIRST TASK</button>
+                        </Link>
+                }
+            </div>
+        </>
     )
 }
 
