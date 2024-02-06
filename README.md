@@ -28,3 +28,9 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+- Hello there!
+
+Welcome to this CRUD app developed by WilderAp to practice coding This is the Frontend side of the application, so if you want to test the full app, you must also download/clone the Backend part of the application, you can find it as "CRUD-Backend-Typescript on my repos! This Client was made using React and Zustand with TypeScript
+
+You must clone it and execute the "npm install" command to be able to turn on the server. Also to start the server you can use the "npm run dev" command on the main root terminal.
